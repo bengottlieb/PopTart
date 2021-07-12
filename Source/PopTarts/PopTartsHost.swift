@@ -8,9 +8,10 @@
 import SwiftUI
 
 public struct PopTartHost: View {
-	@Environment(\.popTarts) var popTarts
+	@ObservedObject var popTarts: PopTarts
 	
-	public init() {
+	public init(popTarts: PopTarts) {
+		self.popTarts = popTarts
 	}
 	
 	public var body: some View {
@@ -31,7 +32,7 @@ struct PopTartHost_Previews: PreviewProvider {
 	static var previews: some View {
 		ZStack() {
 			Color.gray.edgesIgnoringSafeArea(.all)
-			PopTartHost()
+			PopTartHost(popTarts: popTarts)
 		}
 		.onAppear {
 			popTarts.pop(tart: PopTarts.Tart(title: "Good Morning!"))

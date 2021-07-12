@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct TartView: View {
+	@Environment(\.popTarts) var popTarts
 	let tart: PopTarts.Tart
 	var body: some View {
 		ZStack(alignment: .top) {
 			Text(tart.title)
-				.padding()
+				.font(tart.titleFont)
+				.padding(.horizontal, 16)
+				.padding(.vertical, 8)
 				.foregroundColor(tart.textColor)
 				.background(backgroundView)
+				.padding()
 		}
 		.frame(maxHeight: .infinity, alignment: .top)
+		.transition(.move(edge: .top))
+		.zIndex(100)
+		.onTapGesture {
+			popTarts.dismissCurrentTart()
+		}
 	}
 	
 	var backgroundView: some View {

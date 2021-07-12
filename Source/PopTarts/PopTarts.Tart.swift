@@ -17,6 +17,7 @@ public extension PopTarts {
 		public var borderColor = Color.white
 		public var borderWidth: CGFloat = 2
 		public var cornerRadius: CGFloat = 8
+		public var titleFont = Font.system(size: 14, weight: .semibold)
 		
 		
 		public init(title: String, duration: TimeInterval = PopTarts.onScreenTime) {
