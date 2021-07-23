@@ -9,6 +9,7 @@ import SwiftUI
 
 public class PopTarts: ObservableObject {
 	var tarts: [Tart] = []
+	public static weak var instance: PopTarts?
 	
 	@Published var currentTart: Tart?
 	weak var nextTartTimer: Timer?

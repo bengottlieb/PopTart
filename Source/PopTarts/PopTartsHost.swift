@@ -12,6 +12,7 @@ public struct PopTartHost: View {
 	
 	public init(popTarts: PopTarts) {
 		self.popTarts = popTarts
+		PopTarts.instance = popTarts
 	}
 	
 	public var body: some View {
