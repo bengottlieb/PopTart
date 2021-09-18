@@ -17,7 +17,7 @@ let package = Package(
             targets: ["PopTarts"]),
     ],
 	dependencies: [
-		  .package(url: "https://github.com/bengottlieb/Suite.git", from: "0.10.75"),
+		  .package(url: "https://github.com/bengottlieb/Suite.git", from: "1.0.0"),
 	],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
