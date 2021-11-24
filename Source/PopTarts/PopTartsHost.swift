@@ -7,15 +7,10 @@
 
 import SwiftUI
 
-public struct PopTartHost: View {
-	@ObservedObject var popTarts: PopTarts
+struct PopTartHost: View {
+	@ObservedObject var popTarts = PopTarts.instance
 	
-	public init(popTarts: PopTarts) {
-		self.popTarts = popTarts
-		PopTarts.instance = popTarts
-	}
-	
-	public var body: some View {
+	var body: some View {
 		ZStack() {
 			Rectangle()
 				.fill(Color.clear)
@@ -29,15 +24,12 @@ public struct PopTartHost: View {
 }
 
 struct PopTartHost_Previews: PreviewProvider {
-	static let popTarts = PopTarts()
 	static var previews: some View {
 		ZStack() {
 			Color.gray.edgesIgnoringSafeArea(.all)
-			PopTartHost(popTarts: popTarts)
 		}
 		.onAppear {
-			popTarts.pop(tart: PopTarts.Tart(title: "Good Morning!"))
+			PopTarts.instance.pop(tart: PopTarts.Tart(title: "Good Morning!"))
 		}
-		.environment(\.popTarts, popTarts)
 	}
 }

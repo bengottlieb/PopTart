@@ -9,16 +9,27 @@ import SwiftUI
 
 public class PopTarts: ObservableObject {
 	var tarts: [Tart] = []
-	public static weak var instance: PopTarts?
+	public static let instance = PopTarts()
 	
 	@Published var currentTart: Tart?
 	weak var nextTartTimer: Timer?
+	var hostWindow: UIWindow?
 	
-	public init() {
+	private init() {
 		
 	}
 	
+	public func setup(in scene: UIWindowScene? = nil) {
+		DispatchQueue.main.async {
+			self.add(toScene: scene)
+		}
+	}
+
 	public func pop(tart: Tart) {
+		if hostWindow == nil {
+			print("#### PopTarts was not successfully set up. Please calld PopTarts.instance.setup(scene:) at init time ###")
+			return
+		}
 		DispatchQueue.main.async {
 			self.tarts.append(tart)
 			if self.nextTartTimer == nil { self.showNextTart() }

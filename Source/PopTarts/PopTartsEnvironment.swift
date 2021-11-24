@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct PopTartsKey: EnvironmentKey {
-	public static let defaultValue = PopTarts()
+	public static let defaultValue: PopTarts = PopTarts.instance
 }
 
 public extension EnvironmentValues {
